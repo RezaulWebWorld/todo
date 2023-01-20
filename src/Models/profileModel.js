@@ -1,12 +1,12 @@
 const mongoose=require('mongoose')
 
 const dataSchema=mongoose.Schema({
-  fName:{type: "string"},
-  lName:{type:"string"},
-  email:{type:"string"},
-  dob:{type:"string"},
-  userId:{type:"string"},
-  password:{type:"string"}
+  fName:{type: String},
+  lName:{type:String},
+  email:{type:String},
+  dob:{type:String},
+  userId:{type:String,unique: true},
+  password:{type:String}
 },{versionKey:false})
 
 

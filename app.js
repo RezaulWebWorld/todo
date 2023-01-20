@@ -32,7 +32,7 @@ let limiter=rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
 
 let url='mongodb://127.0.0.1:27017/Todo'
-let option={user:'', pass:''}
+let option={user:'', pass:'',autoIndex:true}
 
 mongoose.connect(url,option,function(err){
   console.log("Connection Established Successfully to TODO Database")
@@ -41,8 +41,8 @@ mongoose.connect(url,option,function(err){
 
 app.use("/api/v1",router)
 
-// app.use('*', (req,res)=>{
-//   res.status(404).json({status:"Failed", data:"No Directory found"})
-// })
+app.use('*', (req,res)=>{
+  res.status(404).json({status:"Failed", data:"No Directory found"})
+})
 
 module.exports=app
