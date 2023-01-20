@@ -3,7 +3,7 @@
 const express=require('express')
 const bodyParser=require('body-parser')
 const app= new express()
-const route=require('./src/Routes/api')
+const router=require('./src/Routes/api')
 
 
 ///Security Middle Ware Configure
@@ -18,7 +18,6 @@ const xss= require("xss-clean")
 //Database Connection Import
 
 const mongoose=require('mongoose')
-const router = require('../../Rest Api Structure/src/routes/api/api')
 
 ///Implementation
 app.use(mongoSanit())
@@ -40,10 +39,10 @@ mongoose.connect(url,option,function(err){
   console.log(err)
 })
 
-app.use('/v1/api',router)
+app.use("/api/v1",router)
 
-app.use('*', (req,res)=>{
-  res.status(404).json({status:"Failed", data:"No Directory found"})
-})
+// app.use('*', (req,res)=>{
+//   res.status(404).json({status:"Failed", data:"No Directory found"})
+// })
 
 module.exports=app
